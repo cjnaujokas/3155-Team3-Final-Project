@@ -4,7 +4,7 @@ from pydantic import BaseModel
 
 
 class FoodItemBase(BaseModel):
-    sandwich_name: str
+    food_item_name: str
     price: float
 
 
@@ -13,7 +13,7 @@ class FoodItemCreate(FoodItemBase):
 
 
 class FoodItemUpdate(BaseModel):
-    sandwich_name: Optional[str] = None
+    food_item_name: Optional[str] = None
     price: Optional[float] = None
 
 

@@ -4,12 +4,12 @@ from datetime import datetime
 from ..dependencies.database import Base
 
 
-class Sandwich(Base):
-    __tablename__ = "sandwiches"
+class Food_item(Base):
+    __tablename__ = "food_items"
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    sandwich_name = Column(String(100), unique=True, nullable=True)
+    food_item_name = Column(String(100), unique=True, nullable=True)
     price = Column(DECIMAL(4, 2), nullable=False, server_default='0.0')
 
-    recipes = relationship("Recipe", back_populates="sandwich")
-    order_details = relationship("OrderDetail", back_populates="sandwich")
+    recipes = relationship("Recipe", back_populates="food_item")
+    order_details = relationship("OrderDetail", back_populates="food_item")
