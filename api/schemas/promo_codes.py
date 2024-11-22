@@ -3,14 +3,16 @@ from pydantic import BaseModel
 from typing import Optional
 
 class PromoBase(BaseModel):
-    promocode: int
+    code: int
+    expiration: datetime
     description: Optional[str] = None
 
 class PromoCreate(PromoBase):
     pass
 
 class PromoUpdate(BaseModel):
-    promocode: Optional[int] = None
+    code: Optional[int] = None
+    expiration: Optional[datetime] = None
     description: Optional[str] = None
 
 class Promo(PromoBase):

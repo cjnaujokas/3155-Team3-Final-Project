@@ -8,4 +8,4 @@ class Promo_Codes(Base):
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     code = Column(Integer, unique=True)
     expiration = Column(DATETIME, nullable=False, server_default=str(datetime.now()))
-    description = Column(String, nullable=True)
+    description = Column(String(300), nullable=True)
