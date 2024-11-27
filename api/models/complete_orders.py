@@ -6,8 +6,9 @@ from ..dependencies.database import Base
 
 class complete_orders(Base):
     __tablename__ = "complete_orders"
-
+    #columns  
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     order_id = Column(Integer)
 
-    complete_orders = relationship("OrderDetail", back_populates="order")
+    #relationships
+    order = relationship("Order", back_populates="complete_orders") #link to orders

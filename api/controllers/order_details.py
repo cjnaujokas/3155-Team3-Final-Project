@@ -8,7 +8,8 @@ def create(db: Session, request):
     new_item = model.OrderDetail(
         order_id=request.order_id,
         sandwich_id=request.sandwich_id,
-        amount=request.amount
+        amount=request.amount,
+        price=request.price #ADDED 11/27 
     )
 
     try:
