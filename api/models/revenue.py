@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 from sqlalchemy import Column, Integer, DateTime, DECIMAL
+=======
+from sqlalchemy import Column, ForeignKey, Integer, DECIMAL, DateTime
+>>>>>>> Stashed changes
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from ..dependencies.database import Base
@@ -9,6 +13,7 @@ class Revenue(Base):
 
     # Columns
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+<<<<<<< Updated upstream
     revenue_date = Column(DateTime, nullable=False, default=datetime.utcnow)  # Date of revenue
     total_revenue = Column(DECIMAL(10, 2), nullable=False, default=0.00)  # Total revenue
 
@@ -41,3 +46,12 @@ class Revenue(Base):
         TODO: Implement logic to filter and sum revenue for the given month and year.
         """
         pass
+=======
+    revenue_date = Column(DateTime, nullable=False, default=datetime.utcnow)
+    total_revenue = Column(DECIMAL(6, 2), nullable=False, server_default='0.0')
+
+    order_id = Column(Integer, ForeignKey("orders.id"), nullable=False)  # Foreign key linking to Order
+
+    # Relationships
+    order = relationship("Order", back_populates="revenue")
+>>>>>>> Stashed changes

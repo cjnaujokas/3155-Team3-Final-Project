@@ -1,14 +1,14 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, DECIMAL, DATETIME
+from sqlalchemy import Column, Integer, ForeignKey, String
 from sqlalchemy.orm import relationship
-from datetime import datetime
 from ..dependencies.database import Base
 
 class Review(Base):
     __tablename__ = "reviews"
 
-    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    content = Column(String(100), unique=True, nullable=False)
-    stars = Column(Integer, index=True, nullable=False, server_default='0.0')
-    order_id = Column(Integer, ForeignKey("orders.id"))
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    content = Column(String(300), nullable=False)
+    stars = Column(Integer, nullable=False, server_default='0')
+    recipe_id = Column(Integer, ForeignKey("recipes.id"), nullable=False)  # Foreign key linking to Recipe
 
-    recipes = relationship("Order", back_populates="reviews")
+    # Relationships
+    recipe = relationship("Recipe", back_populates="reviews")

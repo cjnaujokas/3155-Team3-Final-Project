@@ -1,15 +1,15 @@
-from sqlalchemy import Column, Boolean,ForeignKey, Integer, String, DECIMAL, DATETIME
+from sqlalchemy import Column, Boolean, Integer, String, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import Session
 from datetime import datetime
 from ..dependencies.database import Base
-
 
 class Order(Base):
     __tablename__ = "orders"
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     customer_name = Column(String(100))
+<<<<<<< Updated upstream
     order_date = Column(DATETIME, nullable=False, server_default=str(datetime.now()))
     description = Column(String(300), nullable=True)
     takeout = Column(Boolean, nullable=False, default=False)
@@ -80,3 +80,16 @@ class Order(Base):
     def list_orders(cls, session: Session):
         #list all orders
         return session.query(cls).all()
+=======
+    order_date = Column(DateTime, nullable=False, default=datetime.utcnow)
+    description = Column(String(300), nullable=True)
+    takeout = Column(Boolean, nullable=False, default=False)
+
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)  # Foreign key linking to User
+
+    # Relationships
+    user = relationship("User", back_populates="orders")
+    order_details = relationship("OrderDetail", back_populates="order", cascade="all, delete-orphan")
+    complete_orders = relationship("CompleteOrders", back_populates="order", cascade="all, delete-orphan")
+    revenue = relationship("Revenue", back_populates="order", uselist=False)
+>>>>>>> Stashed changes
