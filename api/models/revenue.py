@@ -9,5 +9,7 @@ class Revenue(Base):
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     revenue_date = Column(DATETIME, nullable=False, server_default=str(datetime.now()))
     total_revenue = Column(DECIMAL(6,2), nullable=False, server_default='0.0')
+    
+    order_id = Column(Integer, ForeignKey("orders.id"))
 
-    orders = relationship("Revenue", back_populates="orders")
+    order = relationship("Order", back_populates="revenue")
