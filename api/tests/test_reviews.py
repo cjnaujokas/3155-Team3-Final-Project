@@ -31,3 +31,10 @@ def test_create_review(db_session):
     assert created_review.content == "This is a test review"
     assert created_review.stars == "5"
     assert created_review.order_id == "1"
+    
+def test_read_all_reviews(db_session):
+    # Call the read_all function
+    reviews = controller.read_all(db_session)
+
+    # Assertions
+    assert reviews is not None
