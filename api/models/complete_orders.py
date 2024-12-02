@@ -9,10 +9,5 @@ class CompleteOrders(Base):
     order_id = Column(Integer, ForeignKey("orders.id"), nullable=False)  
     completion_status = Column(String(100), nullable=False)
 
-<<<<<<< Updated upstream
-    #relationships
-    order = relationship("Order", back_populates="complete_orders") #link to orders
-=======
     # Relationships
     order = relationship("Order", back_populates="complete_orders")
->>>>>>> Stashed changes
