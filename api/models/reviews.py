@@ -11,4 +11,4 @@ class Review(Base):
     stars = Column(Integer, index=True, nullable=False, server_default='0.0')
     order_id = Column(Integer, ForeignKey("orders.id"))
 
-    recipes = relationship("Order", back_populates="reviews")
+    review = relationship("Order", back_populates="reviews")
