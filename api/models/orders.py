@@ -14,4 +14,6 @@ class Order(Base):
     takeout = Column(Boolean)
 
     order_details = relationship("OrderDetail", back_populates="order")
+    reviews = relationship("Review", back_populates="order")
+    complete_orders = relationship("complete_orders", back_populates="order")
     
