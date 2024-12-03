@@ -11,5 +11,3 @@ class Revenue(Base):
     total_revenue = Column(DECIMAL(6,2), nullable=False, server_default='0.0')
     
     order_id = Column(Integer, ForeignKey("orders.id"))
-
-    order = relationship("Order", back_populates="revenue")
