@@ -4,8 +4,9 @@ from pydantic import BaseModel
 
 
 class usersBase(BaseModel):
+    username: str
     password: str
-    order_id: int
+    order_id: Optional[int] = None
 
 
 class usersCreate(usersBase):
@@ -13,13 +14,14 @@ class usersCreate(usersBase):
 
 
 class usersUpdate(BaseModel):
+    username: Optional[str] = None
     password: Optional[str] = None
     order_id: Optional[int] = None
 
 
 
 class usersResource(usersBase):
-    user_id: int
+    id: int
 
     class ConfigDict:
         from_attributes = True
