@@ -10,7 +10,7 @@ class RevenueCreate(RevenueBase):
 
 class RevenueUpdate(RevenueBase):
     total_revenue: Optional[float] = None
-    date: Optional[datetime] = None
+    revenue_date: Optional[datetime] = None
 
 class Revenue(RevenueBase):
     id: int
