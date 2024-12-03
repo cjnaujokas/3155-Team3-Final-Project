@@ -3,13 +3,13 @@ from pydantic import BaseModel
 from typing import Optional
 
 class RevenueBase(BaseModel):
-    total: float
+    total_revenue: float
 
 class RevenueCreate(RevenueBase):
     pass
 
 class RevenueUpdate(RevenueBase):
-    total: Optional[float] = None
+    total_revenue: Optional[float] = None
 
 class Revenue(RevenueBase):
     id: int

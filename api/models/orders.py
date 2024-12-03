@@ -17,5 +17,4 @@ class Order(Base):
     reviews = relationship("Review", back_populates="order")
     complete_orders = relationship("complete_orders", back_populates="order")
     user = relationship("user", back_populates="orders")
-    revenue = relationship("Revenue", back_populates="order")
     
