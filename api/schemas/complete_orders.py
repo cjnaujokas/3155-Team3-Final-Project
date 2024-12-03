@@ -12,7 +12,7 @@ class complete_ordersCreate(complete_ordersBase):
 
 
 class complete_ordersUpdate(BaseModel):
-    order_id: Optional[str] = None
+    order_id: Optional[int] = None
 
 
 class complete_ordersResource(complete_ordersBase):
