@@ -1,4 +1,4 @@
-from . import orders, order_details, reviews, users, complete_orders, revenue
+from . import orders, order_details, reviews, users, complete_orders, revenue, resources
 
 
 def load_routes(app):
@@ -8,3 +8,4 @@ def load_routes(app):
     app.include_router(users.router)
     app.include_router(complete_orders.router)
     app.include_router(revenue.router)
+    app.include_router(resources.router)
