@@ -3,7 +3,7 @@ from fastapi import HTTPException, status, Response, Depends
 from ..models import orders as model
 from sqlalchemy.exc import SQLAlchemyError
 
-
+# Orders Controller create
 def create(db: Session, request):
     new_item = model.Order(
         customer_name=request.customer_name,
@@ -19,8 +19,8 @@ def create(db: Session, request):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
 
     return new_item
-
-
+ 
+# Orders Controller read_all
 def read_all(db: Session):
     try:
         result = db.query(model.Order).all()
@@ -29,7 +29,7 @@ def read_all(db: Session):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return result
 
-
+# Orders Controller read_one
 def read_one(db: Session, item_id):
     try:
         item = db.query(model.Order).filter(model.Order.id == item_id).first()
@@ -40,7 +40,7 @@ def read_one(db: Session, item_id):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return item
 
-
+# Orders Controller update
 def update(db: Session, item_id, request):
     try:
         item = db.query(model.Order).filter(model.Order.id == item_id)
@@ -54,7 +54,7 @@ def update(db: Session, item_id, request):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return item.first()
 
-
+# Orders Controller delete
 def delete(db: Session, item_id):
     try:
         item = db.query(model.Order).filter(model.Order.id == item_id)

@@ -3,7 +3,7 @@ from fastapi import HTTPException, status, Response, Depends
 from ..models import order_details as model
 from sqlalchemy.exc import SQLAlchemyError
 
-
+# Create a new order detail
 def create(db: Session, request):
     new_item = model.OrderDetail(
         order_id=request.order_id,
@@ -21,7 +21,7 @@ def create(db: Session, request):
 
     return new_item
 
-
+# Read all order details
 def read_all(db: Session):
     try:
         result = db.query(model.OrderDetail).all()
@@ -30,7 +30,7 @@ def read_all(db: Session):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return result
 
-
+# Read one order detail
 def read_one(db: Session, item_id):
     try:
         item = db.query(model.OrderDetail).filter(model.OrderDetail.id == item_id).first()
@@ -41,7 +41,7 @@ def read_one(db: Session, item_id):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return item
 
-
+# Update an order detail
 def update(db: Session, item_id, request):
     try:
         item = db.query(model.OrderDetail).filter(model.OrderDetail.id == item_id)
@@ -55,7 +55,7 @@ def update(db: Session, item_id, request):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return item.first()
 
-
+# Delete an order detail
 def delete(db: Session, item_id):
     try:
         item = db.query(model.OrderDetail).filter(model.OrderDetail.id == item_id)

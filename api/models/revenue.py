@@ -6,8 +6,10 @@ from ..dependencies.database import Base
 class Revenue(Base):
     __tablename__ = "revenue"
 
+    #columns
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     revenue_date = Column(DATETIME, nullable=False, server_default=str(datetime.now()))
     total_revenue = Column(DECIMAL(6,2), nullable=False, server_default='0.0')
     
+    #relationships
     order_id = Column(Integer, ForeignKey("orders.id"))

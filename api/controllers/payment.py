@@ -3,7 +3,7 @@ from fastapi import HTTPException, status, Response, Depends
 from ..models import payment as model
 from sqlalchemy.exc import SQLAlchemyError
 
-
+# Payment Controller create
 def create(db: Session, request):
     new_item = model.Payment(
         card_num=request.card_num,
@@ -21,7 +21,7 @@ def create(db: Session, request):
 
     return new_item
 
-
+# Payment Controller read all
 def read_all(db: Session):
     try:
         result = db.query(model.Payment).all()
@@ -30,7 +30,7 @@ def read_all(db: Session):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return result
 
-
+# Payment Controller read one
 def read_one(db: Session, item_id):
     try:
         item = db.query(model.Payment).filter(model.Payment.id == item_id).first()
@@ -41,7 +41,7 @@ def read_one(db: Session, item_id):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return item
 
-
+# Payment Controller update
 def update(db: Session, item_id, request):
     try:
         item = db.query(model.Payment).filter(model.Payment.id == item_id)
@@ -55,7 +55,7 @@ def update(db: Session, item_id, request):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return item.first()
 
-
+# Payment Controller delete
 def delete(db: Session, item_id):
     try:
         item = db.query(model.Payment).filter(model.Payment.id == item_id)

@@ -3,7 +3,7 @@ from fastapi import HTTPException, status, Response, Depends
 from ..models import users as model
 from sqlalchemy.exc import SQLAlchemyError
 
-
+# Users Controller
 def create(db: Session, request):
     new_item = model.user(
         order_id=request.order_id,

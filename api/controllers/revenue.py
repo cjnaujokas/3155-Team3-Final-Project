@@ -3,7 +3,7 @@ from fastapi import HTTPException, status, Response, Depends
 from ..models import revenue as model
 from sqlalchemy.exc import SQLAlchemyError
 
-
+# Revenue Controller
 def create(db: Session, request):
     new_item = model.Revenue(
         total_revenue=request.total_revenue

@@ -5,7 +5,7 @@ from ..dependencies.database import Base
 
 class Payment(Base):
     __tablename__ = "payment"
-
+    #columns
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     card_num = Column(Integer, unique=False, nullable=True, server_default='0')
     expiration_date = Column(DATETIME, nullable=True, server_default=str(date.today()))
