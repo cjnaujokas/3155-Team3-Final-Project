@@ -5,7 +5,7 @@ from typing import Optional
 class PaymentBase(BaseModel):
     card_num: int
     expiration_date: date
-    complete = bool
+    complete: bool = False
 
 class PaymentCreate(PaymentBase):
     pass
@@ -17,7 +17,6 @@ class PaymentUpdate(PaymentBase):
 
 class Payment(PaymentBase):
     id: int
-    expiration_date: date
 
     class ConfigDict:
         from_attributes = True
