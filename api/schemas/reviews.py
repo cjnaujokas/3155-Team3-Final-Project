@@ -6,7 +6,7 @@ from pydantic import BaseModel
 class ReviewBase(BaseModel):
     content: str
     stars: int
-    order_id: int
+    order_id: Optional[int] = None
 
 
 class ReviewCreate(ReviewBase):
