@@ -3,6 +3,7 @@ from typing import Optional
 from pydantic import BaseModel
 from .order_details import OrderDetail
 from .reviews import Review
+from .complete_orders import complete_ordersResource
 
 
 
@@ -26,6 +27,7 @@ class Order(OrderBase):
     order_date: Optional[date] = None
     order_details: list[OrderDetail] = None
     reviews: list[Review] = None
+    complete_order: list[complete_ordersResource] = None
 
     class ConfigDict:
         from_attributes = True
