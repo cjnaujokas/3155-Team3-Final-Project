@@ -27,7 +27,8 @@ class Order(OrderBase):
     order_date: Optional[date] = None
     order_details: list[OrderDetail] = None
     reviews: list[Review] = None
-    complete_order: list[complete_ordersResource] = None
+    tracking_number: Optional[int] = None
+    
 
     class ConfigDict:
         from_attributes = True
