@@ -5,17 +5,13 @@ from sqlalchemy.exc import SQLAlchemyError
 
 # Reviews Controller
 def create(db: Session, request):
-    if hasattr(request, 'order_id'):
-        new_item = model.Review(
-            content=request.content,
-            stars=request.stars
-    )
-    else:
-        new_item = model.Review(
+    
+    new_item = model.Review(
         content=request.content,
         stars=request.stars,
-        order_id=request.order_id
-        )
+        order_id=request.order_id if hasattr(request, 'order_id') else None
+    )
+            
 
     try:
         db.add(new_item)
