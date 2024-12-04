@@ -2,6 +2,7 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel
 from .order_details import OrderDetail
+from .reviews import Review
 
 
 
@@ -24,6 +25,7 @@ class Order(OrderBase):
     id: int
     order_date: Optional[datetime] = None
     order_details: list[OrderDetail] = None
+    reviews: list[Review] = None
 
     class ConfigDict:
         from_attributes = True

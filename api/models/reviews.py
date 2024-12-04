@@ -8,9 +8,9 @@ class Review(Base):
 
     #columns
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    content = Column(String(100), unique=True, nullable=False)
+    content = Column(String(100), unique=False, nullable=False)
     stars = Column(Integer, index=True, nullable=False, server_default='0.0')
-    order_id = Column(Integer, ForeignKey("orders.id"))
+    order_id = Column(Integer, ForeignKey("orders.id"), nullable=True)
 
     #relationships
     order = relationship("Order", back_populates="reviews")
