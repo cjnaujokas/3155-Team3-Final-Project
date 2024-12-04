@@ -20,9 +20,9 @@ def create(request: schema.OrderCreate, db: Session = Depends(get_db)):
 def read_all(db: Session = Depends(get_db)):
     return controller.read_all(db)
 
-@router.get("/{order_date}", response_model=list[schema.Order])
-def read_by_date(order_date: str, db: Session = Depends(get_db)):
-    return controller.read_by_date(db,order_date)
+# @router.get("/{order_date}", response_model=list[schema.Order])
+# def read_by_date(order_date: str, db: Session = Depends(get_db)):
+#     return controller.read_by_date(db,order_date)
 
 @router.get("/{item_id}", response_model=schema.Order)
 def read_one(item_id: int, db: Session = Depends(get_db)):
