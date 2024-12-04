@@ -10,6 +10,9 @@ def create(db: Session, request):
         food_item_id=request.food_item_id,
         amount=request.amount
     )
+    foodItem = request.food_item_id
+    recipe = db.query(model.Recipe).filter(model.Recipe.food_item_id == foodItem).first()
+
 
     try:
         db.add(new_item)
