@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date
 from typing import Optional
 from pydantic import BaseModel
 from .order_details import OrderDetail
@@ -23,7 +23,7 @@ class OrderUpdate(BaseModel):
 
 class Order(OrderBase):
     id: int
-    order_date: Optional[datetime] = None
+    order_date: Optional[date] = None
     order_details: list[OrderDetail] = None
     reviews: list[Review] = None
 
