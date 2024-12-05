@@ -10,6 +10,7 @@ from .complete_orders import complete_ordersResource
 class OrderBase(BaseModel):
     customer_name: str
     description: Optional[str] = None
+    takeout: Optional[bool] = False
 
 
 class OrderCreate(OrderBase):
