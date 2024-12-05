@@ -1,3 +1,11 @@
+
+
+
+https://github.com/user-attachments/assets/5e603b74-fc47-4400-8007-36158e123412
+
+
+
+
 ### Installing necessary packages:  
 * `pip install fastapi`
 * `pip install "uvicorn[standard]"`  
